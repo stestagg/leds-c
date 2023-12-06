@@ -1,10 +1,7 @@
 #include <stdio.h>
 #include <string.h>
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 
-
-
+#include "esp.h"
 #include "vm.h"
 #include "led.h"
 
@@ -172,7 +169,7 @@ void run_prog() {
             case SLEEP:
                 val1 = read_u16();
                 TRACE1("SLEEP: %u ms", val1);
-                vTaskDelay(pdMS_TO_TICKS(val1));
+                sleep(val1);
                 break;
             case JUMP:
                 val1 = read_u16();
